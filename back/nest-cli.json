@@ -1,0 +1,80 @@
+{
+  "collection": "@nestjs/schematics",
+  "compilerOptions": {
+    "assets": [
+      {
+        "include": "i18n/**/*",
+        "watchAssets": true
+      },
+      {
+        "include": "scripts/",
+        "watchAssets": true
+      },
+      {
+        "include": "ecosystem.config.js",
+        "watchAssets": true
+      }
+    ],
+    "webpack": true,
+    "tsConfigPath": "apps/api/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps",
+  "projects": {
+    "api": {
+      "type": "application",
+      "root": "apps/api",
+      "entryFile": "main",
+      "sourceRoot": "apps/api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api/tsconfig.app.json"
+      }
+    },
+    "admin-api": {
+      "type": "application",
+      "root": "apps/admin-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/admin-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/admin-api/tsconfig.app.json"
+      }
+    },
+    "database": {
+      "type": "library",
+      "root": "libs/database",
+      "entryFile": "index",
+      "sourceRoot": "libs/database/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/database/tsconfig.lib.json"
+      }
+    },
+    "jwt-auth": {
+      "type": "library",
+      "root": "libs/jwt-auth",
+      "entryFile": "index",
+      "sourceRoot": "libs/jwt-auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/jwt-auth/tsconfig.lib.json"
+      }
+    },
+    "senders": {
+      "type": "application",
+      "root": "apps/senders",
+      "entryFile": "main",
+      "sourceRoot": "apps/senders/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/senders/tsconfig.app.json",
+        "assets": [
+          {
+            "include": "**/*.hbs",
+            "watchAssets": true
+          },
+          {
+            "include": "**/*.png",
+            "watchAssets": true
+          }
+        ]
+      }
+    }
+  }
+}
